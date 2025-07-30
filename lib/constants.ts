@@ -1,0 +1,5 @@
+export const SERVER_URL =
+    process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Admin-Dashboard'
+export const APP_DESCRIPTION =  process.env.APP_DESCRIPTION || 'An modern dashboard built with Next.js 15, postgres, Shadcn'
+export const ITEMS_PER_PAGE = Number(process.env.ITEMS_PER_PAGE) || 5
