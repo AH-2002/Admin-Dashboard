@@ -1,6 +1,7 @@
 "use client";
 
 import { UserProfile } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 
 export default function ProfilePage() {
@@ -11,7 +12,7 @@ export default function ProfilePage() {
         <div className={`flex justify-center mt-10 w-full ${isDark ? "bg-[#020618]" : "bg-white"}`}>
             <UserProfile
                 appearance={{
-                    baseTheme: isDark ? "dark" : "light",
+                    baseTheme: isDark ? dark : undefined, 
                     variables: {
                         colorBackground: isDark ? "#020618" : "#ffffff",
                         colorText: isDark ? "#ffffff" : "#000000",

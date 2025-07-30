@@ -6,7 +6,7 @@ import { ModeToggle } from './ModeToggle';
 import NavLinks from './NavLinks'
 
 export default function SideBar() {
-    let { isSignedIn } = useUser()
+    const { isSignedIn } = useUser()
     return (
         <div className="w-auto h-full">
             <div className="flex flex-col h-auto justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">

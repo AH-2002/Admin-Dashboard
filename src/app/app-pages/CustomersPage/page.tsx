@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { customers } from "../../../../lib/data"
 export default function CustomersPage() {
     return (
@@ -6,7 +7,7 @@ export default function CustomersPage() {
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {customers.map((customer) => (
                     <li key={customer.id} className="p-4 border rounded shadow bg-white dark:text-white dark:bg-transparent">
-                        <img
+                        <Image
                             src={customer.image_url}
                             alt={customer.name}
                             className="w-16 h-16 rounded-full mb-2"

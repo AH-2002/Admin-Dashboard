@@ -6,17 +6,17 @@ import LoginButton from '../../../../components/LoginButton';
 
 
 export default function LoginForm() {
-    let { isSignedIn } = useUser()
-    let { signIn, setActive } = useSignIn();
-    let [email, setEmail] = useState("");
-    let [password, setPassword] = useState("");
-    let [error, setError] = useState("");
+    const { isSignedIn } = useUser()
+    const { signIn, setActive } = useSignIn();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const router = useRouter();
     useEffect(() => {
         if (isSignedIn) {
             router.push("/");
         }
-    }, [isSignedIn]);
+    }, [isSignedIn, router]);
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -30,6 +30,7 @@ export default function LoginForm() {
             } else {
                 setError('Sign-in not completed')
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             setError(error.errors?.[0]?.message || 'Something went wrong')
         }

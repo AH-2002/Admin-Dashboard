@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import { inter } from "../../components/font";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "../../lib/constants";
 import "./globals.css";
 import { ThemeProvider } from "../../components/theme-provider";
 import Navbar from "../../components/Navbar";
+import { dark } from "@clerk/themes";
+
 
 export const metadata: Metadata = {
   title: {
@@ -22,9 +23,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    appearance={{
+      baseTheme: dark,
+    }}
+    >
       <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+        <body className={`${inter.className} antialiased`}>
 
           <div>
             <ThemeProvider

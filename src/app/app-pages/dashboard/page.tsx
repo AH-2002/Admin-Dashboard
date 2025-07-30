@@ -10,6 +10,9 @@ import LatestInvoices from "./LatestInvoices/LatestInvoices";
 import RevenueChartsWrapper from "./revenue-charts/RevenueChartsWrapper";
 
 export default async function Dashboard() {
+  const statCards = await StatCardsWrapper();
+  const revenueCharts = await RevenueChartsWrapper();
+  const latestInvoices = await LatestInvoices();
   return (
     <main className="dashboardPage min-h-screen px-4 py-6 space-y-6 flex flex-col">
       <header>
@@ -20,21 +23,18 @@ export default async function Dashboard() {
 
       {/* Stat Cards */}
       <Suspense fallback={<CardsSkeleton />}>
-        {/* @ts-expect-error Async Server Component */}
-        <StatCardsWrapper />
+        {statCards}
       </Suspense>
 
       <section className="flex flex-col lg:flex-row gap-6">
         <div className="flex-1">
           <Suspense fallback={<RevenueChartSkeleton />}>
-            {/* @ts-expect-error Async Server Component */}
-            <RevenueChartsWrapper />
+            {revenueCharts}
           </Suspense>
         </div>
         <div className="flex-1">
           <Suspense fallback={<LatestInvoicesSkeleton />}>
-            {/* @ts-expect-error Async Server Component */}
-            <LatestInvoices />
+            {latestInvoices}
           </Suspense>
         </div>
       </section>

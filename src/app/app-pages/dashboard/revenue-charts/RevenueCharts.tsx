@@ -1,5 +1,5 @@
 "use client"
-import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, CartesianGrid, Tooltip } from "recharts"
+import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from "recharts"
 
 export default function RevenueCharts({ revenue }: { revenue: { month: string; revenue: number }[] }) {
     if (!revenue || revenue.length === 0) {

@@ -5,19 +5,19 @@ import React, { useEffect, useState } from 'react'
 import SignupButton from '../../../../components/signupButton';
 
 export default function SignupForm() {
-  let { isSignedIn } = useUser();
-  let { signUp, setActive } = useSignUp();
-  let [firstName, setFirstName] = useState("");
-  let [lastName, setLastName] = useState("");
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [error, setError] = useState("");
+  const { isSignedIn } = useUser();
+  const { signUp, setActive } = useSignUp();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
   useEffect(() => {
     if (isSignedIn) {
       router.push("/");
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, router]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -33,6 +33,7 @@ export default function SignupForm() {
       } else {
         setError('Sign-up not completed')
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setError(error.errors?.[0]?.message || 'Something went wrong')
     }
